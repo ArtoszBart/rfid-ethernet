@@ -1,6 +1,7 @@
 #include <Arduino.h>
 
 #include "config.h"
+#include "buzzer/buzzer.h"
 
 void setup()
 {
@@ -10,6 +11,8 @@ void setup()
 
 	LOG("SETUP START");
 	pinMode(LED_BUILTIN, OUTPUT);
+
+	buzzerInit();
 
 	LOG("SETUP FINISHED");
 }

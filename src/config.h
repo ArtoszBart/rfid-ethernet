@@ -12,3 +12,6 @@
 #define LOG(x)
 #define LOGF(x, y)
 #endif
+
+// ===== PINS =====
+#define BUZZER_PIN 5
