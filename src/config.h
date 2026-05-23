@@ -15,3 +15,6 @@
 
 // ===== PINS =====
 #define BUZZER_PIN 5
+
+#define RC522_CS 10
+#define RC522_RST 9
