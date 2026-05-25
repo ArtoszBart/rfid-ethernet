@@ -18,3 +18,6 @@
 
 #define RC522_CS 10
 #define RC522_RST 9
+
+#define W5500_CS 8
+#define W5500_RST 7

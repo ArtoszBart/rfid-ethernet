@@ -1,9 +1,13 @@
 #include <Arduino.h>
+#include <SPI.h>
 
 #include "config.h"
 #include "buzzer/buzzer.h"
 #include "rfid/rfid.h"
 #include "models/ScanData.h"
+#include "ethernet/ethernet.h"
+
+unsigned long uptime;
 
 void setup()
 {
@@ -14,10 +18,14 @@ void setup()
 	LOG("SETUP START");
 	pinMode(LED_BUILTIN, OUTPUT);
 
+	SPI.begin();
+
 	buzzerInit();
+	ethernetInit();
 	rfidInit();
 
 	LOG("SETUP FINISHED");
+	uptime = millis();
 }
 
 void loop()
@@ -27,10 +35,12 @@ void loop()
 	digitalWrite(LED_BUILTIN, LOW);
 	delay(50);
 
+	ethernetMaintain(uptime);
+
 	ScanData scanData;
 	if (scanRfid(scanData.uid))
 	{
-		LOGF("UID: ", scanData.uid);
+		sendRequest(scanData);
 	}
 
 	delay(1000);
