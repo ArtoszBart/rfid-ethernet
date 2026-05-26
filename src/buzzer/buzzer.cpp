@@ -19,13 +19,62 @@ void beepWaiting()
 	beep(100, 50);
 }
 
+// 201
+void beepTagAdded()
+{
+	beep(50, 50);
+	beep(50, 50);
+	beep(50, 50);
+	beep(50, 50);
+	beep(50, 50);
+	beep(50, 50);
+	beep(50, 50);
+	beep(50, 50);
+	beep(50, 50);
+	beep(50, 50);
+}
+
+// 202
+void beepAdmin()
+{
+	beep(50, 50);
+	beep(50, 50);
+	beep(300, 50);
+}
+
+// 204
 void beepAccepted()
 {
 	beep(50, 50);
 	beep(50, 50);
 }
 
-void beepDenied()
+// 403
+void beepUnassigned()
 {
+	beep(300, 100);
+	beep(300, 100);
+	beep(300, 100);
+}
+
+// 404
+void beepUnregistered()
+{
+	beep(1000, 100);
+}
+
+// 409
+void beepConflict()
+{
+	beep(500, 50);
+	beep(50, 50);
+	beep(500, 50);
+	beep(50, 50);
+}
+
+// error
+void beepError()
+{
+	beep(1000, 100);
 	beep(1000, 100);
 }

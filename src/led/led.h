@@ -1,6 +1,10 @@
 #pragma once
 
 void ledsInit();
-void ledsOff();
 void ledsOn();
+void ledsOff();
 void ledBlinkStandby();
+
+void ledGreenOn();
+void ledRedOn();
+void ledYellowOn();

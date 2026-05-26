@@ -1,6 +1,12 @@
 #pragma once
 
 void buzzerInit();
-void beepAccepted();
-void beepDenied();
 void beepWaiting();
+
+void beepTagAdded();
+void beepAdmin();
+void beepAccepted();
+void beepUnassigned();
+void beepUnregistered();
+void beepConflict();
+void beepError();

@@ -44,4 +44,5 @@ void loop()
 	}
 
 	delay(1000);
+	ledsOff();
 }

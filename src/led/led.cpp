@@ -29,3 +29,18 @@ void ledBlinkStandby()
 	digitalWrite(LED_YELLOW_PIN, LOW);
 	delay(50);
 }
+
+void ledGreenOn()
+{
+	digitalWrite(LED_GREEN_PIN, HIGH);
+}
+
+void ledYellowOn()
+{
+	digitalWrite(LED_YELLOW_PIN, HIGH);
+}
+
+void ledRedOn()
+{
+	digitalWrite(LED_RED_PIN, HIGH);
+}

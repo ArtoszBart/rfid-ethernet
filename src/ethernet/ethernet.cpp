@@ -5,6 +5,7 @@
 #include "../models/ScanData.h"
 #include "../models/HttpResponse.h"
 #include "../jsonSerializer/jsonSerializer.h"
+#include "../led/led.h"
 
 IPAddress server;
 byte mac[] = MAC_ADDRESS;
@@ -146,8 +147,38 @@ void sendRequest(const ScanData &scanData)
 	HTTPClient httpClient(ethernetClient, server, SERVER_PORT);
 	HttpResponse response = httpClient.fetch(SCAN_ENDPOINT, json);
 
-	if (response.success)
+	switch (response.statusCode)
+	{
+	case 201:
+		ledGreenOn();
+		ledYellowOn();
+		beepTagAdded();
+		break;
+	case 202:
+		ledGreenOn();
+		ledYellowOn();
+		beepAdmin();
+		break;
+	case 204:
+		ledGreenOn();
 		beepAccepted();
-	else
-		beepDenied();
+		break;
+	case 403:
+		ledRedOn();
+		beepUnassigned();
+		break;
+	case 404:
+		ledRedOn();
+		beepUnregistered();
+		break;
+	case 409:
+		ledYellowOn();
+		ledRedOn();
+		beepConflict();
+		break;
+	default:
+		ledRedOn();
+		beepError();
+		break;
+	}
 }
