@@ -6,6 +6,7 @@
 #include "rfid/rfid.h"
 #include "models/ScanData.h"
 #include "ethernet/ethernet.h"
+#include "led/led.h"
 
 unsigned long uptime;
 
@@ -16,7 +17,8 @@ void setup()
 #endif
 
 	LOG("SETUP START");
-	pinMode(LED_BUILTIN, OUTPUT);
+	ledsInit();
+	ledsOn();
 
 	SPI.begin();
 
@@ -24,17 +26,15 @@ void setup()
 	ethernetInit();
 	rfidInit();
 
+	ledsOff();
 	LOG("SETUP FINISHED");
+
 	uptime = millis();
 }
 
 void loop()
 {
-	digitalWrite(LED_BUILTIN, HIGH);
-	delay(50);
-	digitalWrite(LED_BUILTIN, LOW);
-	delay(50);
-
+	ledBlinkStandby();
 	ethernetMaintain(uptime);
 
 	ScanData scanData;
